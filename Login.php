@@ -7,7 +7,7 @@ $username = $_POST["username"];
 $password = $_POST["password"];
 
 //Create Connection
-$con = new mysqli($servername, $username, $password, 'writeeverydatabase');
+$con = new mysqli($servername, "Ahlquist", "Amy102!!", 'writeeverydatabase');
 
 // Check connection
 if ($con->connect_error) {
