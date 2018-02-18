@@ -1,15 +1,15 @@
 <?php
 
 $servername = "localhost";
-$username = "username";
-$password = "password";
+$username = $_POST["username"];
+$password = $_POST["password"];
 
 //Create Connection
 $con = new mysqli($servername, $username, $password, "writeeverydatabase");
 
 // Check connection
 if ($con->connect_error) {
-	die("Connection failed: " . $conn->connect_error);
+	die("Connection failed: " . $con->connect_error);
 } 
 
 //Sql query
@@ -28,7 +28,7 @@ if ($result = mysqli_query($con, $sql))
 	{
 		// Add each row into our results array
 		$tempArray = $row;
-	    array_push($resultArray, $tempArray);
+	    	array_push($resultArray, $tempArray);
 	}
  
 	// Encode the array to JSON and output the results
