@@ -9,6 +9,10 @@ $database = $_POST['database'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 
+$Array[] = "Servername: ".$servername." DBusername: ".$DBusername." DBpassword: ".$DBpassword." database: ".$database." username: ".$username." password: ".$password
+
+echo json_encode($Array)
+
 //Create Connection
 $con = new mysqli($servername, $DBusername, $DBpassword, $database);
 
