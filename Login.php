@@ -18,7 +18,7 @@ $con = new mysqli($servername, $DBusername, $DBpassword, $database);
 // Check connection
 if ($con->connect_error) {
 	die("Connection failed: " . $con->connect_error);
-	$NewArray[] = "Connection failed"
+	$NewArray[] = "Connection failed";
 	echo json_encode($NewArray);
 } 
 
