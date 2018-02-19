@@ -10,7 +10,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 $array = array();
-$array = "server: " . $servername;
+$array = "server: maybe it's... " . $servername;
 
 echo json_encode($array);
 
