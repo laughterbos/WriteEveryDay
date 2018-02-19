@@ -2,12 +2,12 @@
 
 header("Content-Type: application/json");
 
-$servername = "localhost";
+$servername = "writeeveryserver.mysql.database.azure.com";
 $username = $_POST["username"];
 $password = $_POST["password"];
 
 //Create Connection
-$con = new mysqli($servername, "Ahlquist", "Amy102!!", 'writeeverydatabase');
+$con = new mysqli($servername, "Ahlquist@writeeveryserver", "Amy102!!", "writeeverydatabase");
 
 // Check connection
 if ($con->connect_error) {
