@@ -39,10 +39,12 @@ if (!$stmt->execute()) {
 //Process results
 $myArray = array();
 $result = $stmt->get_result();
-while($row = $result->fetch_assoc(MYSQL_ASSOC)) {
+while($row = $result->fetch_assoc()) {
 	$myArray[] = $row;
 }
 echo json_encode($myArray);
+
+$stmt->close();
 
 // Close connections
 mysqli_close($con);
