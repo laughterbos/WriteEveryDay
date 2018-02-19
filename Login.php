@@ -4,7 +4,7 @@ header("Content-Type: application/json");
 
 $servername = $_POST["servername"];
 $DBusername = $_POST["DBusername"];
-$DBpassword = $_POST["DBassword"];
+$DBpassword = $_POST["DBpassword"];
 $database = $_POST["database"];
 $username = $_POST["username"];
 $password = $_POST["password"];
