@@ -9,10 +9,8 @@ $database = $_POST['database'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$Array[] = "Servername: ".$servername." DBusername: ".$DBusername." DBpassword: ".$DBpassword." database: ".$database." username: ".$username." password: ".$password;
+//$Array[] = "Servername: ".$servername." DBusername: ".$DBusername." DBpassword: ".$DBpassword." database: ".$database." username: ".$username." password: ".$password;
 //" DBusername: ".$DBusername." DBpassword: ".$DBpassword." database: ".$database." username: ".$username." password: ".$password
-
-echo json_encode($Array);
 
 //Create Connection
 $con = new mysqli($servername, $DBusername, $DBpassword, $database);
@@ -20,6 +18,8 @@ $con = new mysqli($servername, $DBusername, $DBpassword, $database);
 // Check connection
 if ($con->connect_error) {
 	die("Connection failed: " . $con->connect_error);
+	$NewArray[] = "Connection failed"
+	echo json_encode($NewArray);
 } 
 
 //Sql query
