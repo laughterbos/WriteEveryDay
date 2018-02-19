@@ -23,9 +23,18 @@ if ($con->connect_error) {
 } 
 
 //Sql query
-$stmt = $con->prepare("SELECT UserID FROM user WHERE Username = ? and Password = ?");
-$stmt->bind_param("ss", $username, $password);
-$stmt->execute();
+if (!($stmt = $con->prepare("SELECT UserID FROM user WHERE Username = ? and Password = ?"))) {
+	$prepareArray[] = "Prepare failed";	
+	echo json_encode($prepareArray);
+}
+if (!$stmt->bind_param("ss", $username, $password)) {
+	$bindArray[] = "Bind failed";
+	echo json_encode($bindArray);
+}
+if (!$stmt->execute()) {
+	$executeArray[] = "Execute array";
+	echo json_encode($executeArray);
+}
 
 //Process results
 $myArray = array();
