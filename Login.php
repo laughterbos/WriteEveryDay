@@ -9,7 +9,8 @@ $database = $_POST['database'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$Array[] = "Servername: ".$servername." DBusername: ".$DBusername." DBpassword: ".$DBpassword." database: ".$database." username: ".$username." password: ".$password;
+$Array[] = "Servername: ".$servername;
+//" DBusername: ".$DBusername." DBpassword: ".$DBpassword." database: ".$database." username: ".$username." password: ".$password
 
 echo json_encode($Array);
 
