@@ -6,8 +6,10 @@ $servername = $_POST['servername'];
 $DBusername = $_POST['DBusername'];
 $DBpassword = $_POST['DBpassword'];
 $database = $_POST['database'];
-$username = $_POST['username'];
-$password = $_POST['password'];
+$noteID = $_POST['noteID'];
+$noteTitle = $_POST['noteTitle'];
+$noteBody = $_POST['noteBody'];
+$wordCount = $_POST['wordCount'];
 
 //Create Connection
 $con = new mysqli($servername, $DBusername, $DBpassword, $database);
@@ -20,12 +22,12 @@ if ($con->connect_error) {
 } 
 
 //Sql query
-if (!($stmt = $con->prepare("SELECT UserID FROM user WHERE Username = ? and Password = ?"))) {
+if (!($stmt = $con->prepare("UPDATE notes SET Title = ?, Note = ?, WordCount = ? WHERE NoteID = ?"))) {
 	$prepareArray[] = "Prepare failed";	
 	echo json_encode($prepareArray);
 }
 
-if (!$stmt->bind_param("ss", $username, $password)) {
+if (!$stmt->bind_param("ssis", $noteTitle, $noteBody, $wordCount, $noteID)) {
 	$bindArray[] = "Bind failed";
 	echo json_encode($bindArray);
 }
