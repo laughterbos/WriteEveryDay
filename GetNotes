@@ -6,8 +6,7 @@ $servername = $_POST['servername'];
 $DBusername = $_POST['DBusername'];
 $DBpassword = $_POST['DBpassword'];
 $database = $_POST['database'];
-$username = $_POST['username'];
-$password = $_POST['password'];
+$userID = $_POST['userID'];
 
 //Create Connection
 $con = new mysqli($servername, $DBusername, $DBpassword, $database);
@@ -20,12 +19,12 @@ if ($con->connect_error) {
 } 
 
 //Sql query
-if (!($stmt = $con->prepare("SELECT UserID FROM user WHERE Username = ? and Password = ?"))) {
+if (!($stmt = $con->prepare("SELECT * FROM note WHERE userID = ?"))) {
 	$prepareArray[] = "Prepare failed";	
 	echo json_encode($prepareArray);
 }
 
-if (!$stmt->bind_param("ss", $username, $password)) {
+if (!$stmt->bind_param("s", $userID)) {
 	$bindArray[] = "Bind failed";
 	echo json_encode($bindArray);
 }
