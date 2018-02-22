@@ -19,7 +19,7 @@ if ($con->connect_error) {
 } 
 
 //Sql query
-if (!($stmt = $con->prepare("SELECT * FROM note WHERE userID = ?"))) {
+if (!($stmt = $con->prepare("SELECT noteID, TimeStamp, Title, Note, WordCount FROM note WHERE userID = ?"))) {
 	$prepareArray[] = "Prepare failed";	
 	echo json_encode($prepareArray);
 }
