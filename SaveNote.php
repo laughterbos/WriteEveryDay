@@ -6,8 +6,10 @@ $servername = $_POST['servername'];
 $DBusername = $_POST['DBusername'];
 $DBpassword = $_POST['DBpassword'];
 $database = $_POST['database'];
-$username = $_POST['username'];
-$password = $_POST['password'];
+$userID = $_POST['userID'];
+$noteTitle = $_POST['noteTitle'];
+$noteBody = $_POST['noteBody'];
+$wordCount = $_POST['wordCount'];
 
 //Create Connection
 $con = new mysqli($servername, $DBusername, $DBpassword, $database);
@@ -20,27 +22,24 @@ if ($con->connect_error) {
 } 
 
 //Sql query
-if (!($stmt = $con->prepare("SELECT UserID FROM user WHERE Username = ? and Password = ?"))) {
+if (!($stmt = $con->prepare("INSERT INTO notes (userid, Title, Note, Word Count) values (?, ?, ?, ?);"))) {
 	$prepareArray[] = "Prepare failed";	
 	echo json_encode($prepareArray);
 }
 
-if (!$stmt->bind_param("ss", $username, $password)) {
+if (!$stmt->bind_param("sssi", $userID, $noteTitle, $noteBody, $wordCount)) {
 	$bindArray[] = "Bind failed";
 	echo json_encode($bindArray);
 }
 
 if (!$stmt->execute()) {
-	$executeArray[] = "Execute array";
+	$executeArray[] = "Execute Failed";
 	echo json_encode($executeArray);
 }
 
 //Process results
 $myArray = array();
-$result = $stmt->get_result();
-while($row = $result->fetch_assoc()) {
-	$myArray[] = $row;
-}
+$myArray[] = "Note inserted successfully"
 
 echo json_encode($myArray);
 
