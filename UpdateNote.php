@@ -38,12 +38,9 @@ if (!$stmt->execute()) {
 }
 
 //Process results
+//Process results
 $myArray = array();
-$result = $stmt->get_result();
-while($row = $result->fetch_assoc()) {
-	$myArray[] = $row;
-}
-
+$myArray[] = "Note updated successfully";
 echo json_encode($myArray);
 
 // Close connections
