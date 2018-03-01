@@ -22,7 +22,7 @@ if ($con->connect_error) {
 } 
 
 //Sql query
-if (!($stmt = $con->prepare("UPDATE notes SET Title = ?, Note = ?, WordCount = ? WHERE NoteID = ?;"))) {
+if (!($stmt = $con->prepare("UPDATE note SET Title = ?, Note = ?, WordCount = ? WHERE NoteID = ?;"))) {
 	$prepareArray[] = "Prepare failed";	
 	echo json_encode($prepareArray);
 }
