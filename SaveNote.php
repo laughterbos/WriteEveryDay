@@ -27,12 +27,12 @@ if (!($stmt = $con->prepare("INSERT INTO note (NoteID, UserID, Timestamp, Title,
 	echo json_encode($prepareArray);
 }
 
-if (!$stmt->bind_param("ssss", $userID, $noteTitle, $noteBody, $wordCount)) {
+/*if (!$stmt->bind_param("ssss", $userID, $noteTitle, $noteBody, $wordCount)) {
 	$bindArray[] = "Bind failed";
 	echo json_encode($bindArray);
-}
+}*/
 
-if (!$stmt->execute()) {
+if (!$stmt->execute(array($userID,$noteTitle,$noteBody,$wordCount)) {
 	$executeArray[] = "Execute Failed";
 	echo json_encode($executeArray);
 }
