@@ -6,10 +6,10 @@ $servername = $_POST['servername'];
 $DBusername = $_POST['DBusername'];
 $DBpassword = $_POST['DBpassword'];
 $database = $_POST['database'];
-$userID = $_POST['userID'];
+$userID = intval($_POST['userID']);
 $noteTitle = $_POST['noteTitle'];
 $noteBody = $_POST['noteBody'];
-$wordCount = $_POST['wordCount'];
+$wordCount = intval($_POST['wordCount']);
 
 //Create Connection
 $con = new mysqli($servername, $DBusername, $DBpassword, $database);
@@ -27,7 +27,7 @@ if (!($stmt = $con->prepare("INSERT INTO notes (userid, Title, Note, Word Count)
 	echo json_encode($prepareArray);
 }
 
-if (!$stmt->bind_param("sssi", $userID, $noteTitle, $noteBody, $wordCount)) {
+if (!$stmt->bind_param("issi", $userID, $noteTitle, $noteBody, $wordCount)) {
 	$bindArray[] = "Bind failed";
 	echo json_encode($bindArray);
 }
