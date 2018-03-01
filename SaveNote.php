@@ -22,7 +22,7 @@ if ($con->connect_error) {
 } 
 
 //Sql query
-if (!($stmt = $con->prepare("INSERT INTO notes (userid, Title, Note, Word Count) values (?, ?, ?, ?);"))) {
+if (!($stmt = $con->prepare("INSERT INTO note ('NoteID','UserID', 'Timestamp', 'Title', 'Note', 'Word Count') values ('',?, CURRENT_TIMESTAMP, ?, ?, ?);"))) {
 	$prepareArray[] = "Prepare failed";	
 	echo json_encode($prepareArray);
 }
