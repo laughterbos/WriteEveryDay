@@ -15,7 +15,7 @@ $Results[] = "Having trouble";
 echo json_encode($Results);
 
 //Create Connection
-$con = new mysqli($servername, $DBusername, $DBpassword, $database);
+/*$con = new mysqli($servername, $DBusername, $DBpassword, $database);
 
 // Check connection
 if ($con->connect_error) {
@@ -48,5 +48,5 @@ echo json_encode($myArray);
 
 // Close connections
 $stmt->close();
-mysqli_close($con);
+mysqli_close($con);*/
 ?>
