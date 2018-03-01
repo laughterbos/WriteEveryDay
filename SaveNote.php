@@ -15,7 +15,7 @@ $Results[] = "UserID: ".$userID." noteTitle: ".$noteTitle." noteBody: ".$noteBod
 echo json_encode($Results);
 
 //Create Connection
-/*$con = new mysqli($servername, $DBusername, $DBpassword, $database);
+$con = new mysqli($servername, $DBusername, $DBpassword, $database);
 
 // Check connection
 if ($con->connect_error) {
@@ -25,12 +25,12 @@ if ($con->connect_error) {
 } 
 
 //Sql query
-if (!($stmt = $con->prepare("INSERT INTO note (NoteID, UserID, Timestamp, Title, Note, WordCount) values (NULL,?, CURRENT_TIMESTAMP, ?, ?, ?);"))) {
+if (!($stmt = $con->prepare("INSERT INTO note (NoteID, UserID, Timestamp, Title, Note, WordCount) values (NULL, ?, CURRENT_TIMESTAMP, ?, ?, ?);"))) {
 	$prepareArray[] = "Prepare failed";	
 	echo json_encode($prepareArray);
 }
 
-if (!$stmt->bind_param("issi", $userID, $noteTitle, $noteBody, $wordCount)) {
+if (!$stmt->bind_param("ssss", $userID, $noteTitle, $noteBody, $wordCount)) {
 	$bindArray[] = "Bind failed";
 	echo json_encode($bindArray);
 }
@@ -48,5 +48,5 @@ echo json_encode($myArray);
 
 // Close connections
 $stmt->close();
-mysqli_close($con);*/
+mysqli_close($con);
 ?>
