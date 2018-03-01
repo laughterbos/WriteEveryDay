@@ -22,18 +22,24 @@ if ($con->connect_error) {
 } 
 
 //Sql query
-$stmt = $con->prepare("INSERT INTO note (NoteID, UserID, Timestamp, Title, Note, WordCount) values (NULL, ?, CURRENT_TIMESTAMP, ?, ?, ?);");
-
-$stmt->bind_param(1, $userID);
-$stmt->bind_param(2, $noteTitle);
-$stmt->bind_param(3, $noteBody);
-$stmt->bind_param(4, $wordCount);
-
-$stmt->execute()
+-if (!($stmt = $con->prepare("INSERT INTO note (NoteID, UserID, Timestamp, Title, Note, WordCount) values (NULL, ?, CURRENT_TIMESTAMP, ?, ?, ?);"))) {
+-	$prepareArray[] = "Prepare failed";	
+-	echo json_encode($prepareArray);
+-}
+-
+-if (!$stmt->bind_param("ssss", $userID, $noteTitle, $noteBody, $wordCount)) {
+-	$bindArray[] = "Bind failed";
+-	echo json_encode($bindArray);
+-}
+-
+-if (!$stmt->execute() {
+-	$executeArray[] = "Execute Failed";
+-	echo json_encode($executeArray);
+-}
 
 //Process results
 $myArray = array();
-$myArray[] = "Note inserted successfully"
+$myArray[] = "Note inserted successfully";
 
 echo json_encode($myArray);
 
