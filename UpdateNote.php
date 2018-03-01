@@ -22,12 +22,12 @@ if ($con->connect_error) {
 } 
 
 //Sql query
-if (!($stmt = $con->prepare("UPDATE notes SET Title = ?, Note = ?, WordCount = ? WHERE NoteID = ?"))) {
+if (!($stmt = $con->prepare("UPDATE notes SET Title = ?, Note = ?, WordCount = ? WHERE NoteID = ?;"))) {
 	$prepareArray[] = "Prepare failed";	
 	echo json_encode($prepareArray);
 }
 
-if (!$stmt->bind_param("ssis", $noteTitle, $noteBody, $wordCount, $noteID)) {
+if (!$stmt->bind_param("ssss", $noteTitle, $noteBody, $wordCount, $noteID)) {
 	$bindArray[] = "Bind failed";
 	echo json_encode($bindArray);
 }
