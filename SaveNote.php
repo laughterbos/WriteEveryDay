@@ -11,7 +11,7 @@ $noteTitle = $_POST['noteTitle'];
 $noteBody = $_POST['noteBody'];
 $wordCount = $_POST['wordCount'];
 
-$Results[] = "UserID: ".$userID." wordCount: ".$wordCount;
+$Results[] = "Having trouble";
 echo json_encode($Results);
 
 //Create Connection
