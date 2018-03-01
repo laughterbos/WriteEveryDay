@@ -6,10 +6,10 @@ $servername = $_POST['servername'];
 $DBusername = $_POST['DBusername'];
 $DBpassword = $_POST['DBpassword'];
 $database = $_POST['database'];
-$userID = intval($_POST['userID']);
+$userID = $_POST['userID'];
 $noteTitle = $_POST['noteTitle'];
 $noteBody = $_POST['noteBody'];
-$wordCount = intval($_POST['wordCount']);
+$wordCount = $_POST['wordCount'];
 
 $Results[] = "UserID: ".$userID." noteTitle: ".$noteTitle." noteBody: ".$noteBody." wordCount: ".$wordCount;
 echo json_encode($Results);
