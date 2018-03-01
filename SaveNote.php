@@ -32,7 +32,7 @@ if ($con->connect_error) {
 -	echo json_encode($bindArray);
 -}
 -
--if (!$stmt->execute() {
+-if (!$stmt->execute()) {
 -	$executeArray[] = "Execute Failed";
 -	echo json_encode($executeArray);
 -}
