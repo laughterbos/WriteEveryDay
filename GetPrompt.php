@@ -6,7 +6,6 @@ $servername = $_POST['servername'];
 $DBusername = $_POST['DBusername'];
 $DBpassword = $_POST['DBpassword'];
 $database = $_POST['database'];
-$userID = $_POST['userID'];
 
 //Create Connection
 $con = new mysqli($servername, $DBusername, $DBpassword, $database);
