@@ -23,11 +23,6 @@ if (!($stmt = $con->prepare("SELECT Prompt FROM prompt ORDER BY rand() LIMIT 1")
 	echo json_encode($prepareArray);
 }
 
-if (!$stmt->bind_param("s", $userID)) {
-	$bindArray[] = "Bind failed";
-	echo json_encode($bindArray);
-}
-
 if (!$stmt->execute()) {
 	$executeArray[] = "Execute array";
 	echo json_encode($executeArray);
