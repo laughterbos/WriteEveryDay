@@ -23,28 +23,34 @@ if ($con->connect_error) {
 } 
 
 //Sql query
-if (!($stmt = $con->prepare("INSERT INTO `user` (`UserID`, `Username`, `Password`) VALUES (NULL, ?, ?);"))) {
+if (!($stmt = $con->prepare("INSERT INTO `user` (`UserID`, `Username`, `Password`) VALUES (NULL, ?, ?)"))) {
 	$prepareArray[] = "Prepare failed";	
 	echo json_encode($prepareArray);
 }
+
 if (!$stmt->bind_param("ss", $username, $password)) {
 	$bindArray[] = "Bind failed";
 	echo json_encode($bindArray);
 }
+
 if (!$stmt->execute()) {
 	$executeArray[] = "Sign Up failed";
 	echo json_encode($executeArray);
 }
 
+$stmt->close();
+
 //Sql query
-if (!($login = $con->prepare("INSERT INTO `user` (`UserID`, `Username`, `Password`) VALUES (NULL, ?, ?);"))) {
+if (!($login = $con->prepare("SELECT UserID FROM user WHERE Username = ? and Password = ?"))) {
 	$prepareArray[] = "Prepare failed";	
 	echo json_encode($prepareArray);
 }
+
 if (!$login->bind_param("ss", $username, $password)) {
 	$bindArray[] = "Bind failed";
 	echo json_encode($bindArray);
 }
+
 if (!$login->execute()) {
 	$executeArray[] = "Login failed";
 	echo json_encode($executeArray);
@@ -56,9 +62,9 @@ $result = $login->get_result();
 while($row = $result->fetch_assoc()) {
 	$myArray[] = $row;
 }
+
 echo json_encode($myArray);
 
-$stmt->close();
 $login->close();
 
 // Close connections
